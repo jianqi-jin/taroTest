@@ -3,12 +3,16 @@ import { View, Text, Button } from '@tarojs/components'
 import './index.scss'
 import ReduceAdd from '../../components/common/ReduceAdd/ReduceAdd'
 
-export default class Index extends Component {
+export interface IState {
+  number: number
+}
+
+export default class Index extends Component<Object, IState> {
   constructor(props) {
     super(props);
     this.state = {
-      text: '1'
-    };
+      number: 1
+    }
   }
   /**
    * 指定config的类型声明为: Taro.Config
@@ -24,6 +28,20 @@ export default class Index extends Component {
     Taro.navigateTo({
       url: '/pages/user/user'
     })
+  }
+
+  onAction(type: String) {
+    if (type === 'add') {
+
+      console.log(type)
+      this.setState({
+        number: this.state.number + 1
+      })
+    } else {
+      this.setState({
+        number: this.state.number - 1
+      })
+    }
   }
   config: Config = {
     navigationBarTitleText: '首页'
@@ -43,10 +61,11 @@ export default class Index extends Component {
   componentDidHide() { }
 
   render() {
+    const number = this.state.number;
     return (
       <View className='index'>
         <Text>Hello world!</Text>
-        <ReduceAdd />
+        <ReduceAdd onAction={this.onAction.bind(this)} number={number} />
         <Button onClick={this.onClick}>goUser</Button>
       </View>
     )

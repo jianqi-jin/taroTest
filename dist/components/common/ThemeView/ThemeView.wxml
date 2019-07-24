@@ -1,0 +1,5 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="ThemeView">
+        <slot></slot>
+    </view>
+</block>

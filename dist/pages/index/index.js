@@ -36,7 +36,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["text"], _this.onClick = function (e) {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["$compid__18", "number"], _this.onClick = function (e) {
       console.log(e);
       _index2.default.navigateTo({
         url: '/pages/user/user'
@@ -59,9 +59,23 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
        */
 
       this.state = {
-        text: '1'
+        number: 1
       };
       this.$$refs = [];
+    }
+  }, {
+    key: "onAction",
+    value: function onAction(type) {
+      if (type === 'add') {
+        console.log(type);
+        this.setState({
+          number: this.state.number + 1
+        });
+      } else {
+        this.setState({
+          number: this.state.number - 1
+        });
+      }
     }
   }, {
     key: "componentWillMount",
@@ -90,7 +104,16 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       var __isRunloopRef = arguments[2];
       var __prefix = this.$prefix;
       ;
-      Object.assign(this.__state, {});
+      var $compid__18 = (0, _index.genCompid)(__prefix + "$compid__18");
+
+      var number = this.__state.number;
+      _index.propsManager.set({
+        "onAction": this.onAction.bind(this),
+        "number": number
+      }, $compid__18);
+      Object.assign(this.__state, {
+        $compid__18: $compid__18
+      });
       return this.__state;
     }
   }]);

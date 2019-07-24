@@ -1,6 +1,6 @@
 <block wx:if="{{$taroCompReady}}">
     <view class="index"><text>Hello world!</text>
-        <reduce-add></reduce-add>
+        <reduce-add compid="{{$compid__18}}"></reduce-add>
         <button bindtap="onClick">goUser</button>
     </view>
 </block>
