@@ -1,0 +1,8 @@
+<block wx:if="{{$taroCompReady}}">
+    <view>
+        <view>{{count}}</view>
+        <button bindtap="onClick" data-e-tap-so="this" data-e-tap-a-a="add">+1</button>
+        <button bindtap="onClick" data-e-tap-so="this" data-e-tap-a-a="reduce">-1</button>
+        <view class="themeText">Im ThemeView Text !</view>
+    </view>
+</block>

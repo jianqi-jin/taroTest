@@ -1,0 +1,6 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="index"><text>Hello world!</text>
+        <reduce-add></reduce-add>
+        <button bindtap="onClick">goUser</button>
+    </view>
+</block>
