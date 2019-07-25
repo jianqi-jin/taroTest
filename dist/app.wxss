@@ -1,1 +1,9 @@
 
+page {
+  font-size: 28rpx;
+  background: #f6f6f6; }
+
+.icon {
+  width: 100rpx;
+  height: 100rpx;
+  border: 1rpx solid #ccc; }

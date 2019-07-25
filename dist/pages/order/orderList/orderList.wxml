@@ -1,0 +1,6 @@
+<block wx:if="{{$taroCompReady}}">
+    <view>
+        <view>Im orderList</view>
+        <nav-bottom compid="{{$compid__3}}"></nav-bottom>
+    </view>
+</block>

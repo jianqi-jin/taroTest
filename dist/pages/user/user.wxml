@@ -1,4 +1,5 @@
 <block wx:if="{{$taroCompReady}}">
     <view class="user"><text>user</text>
+        <nav-bottom compid="{{$compid__1}}"></nav-bottom>
     </view>
 </block>

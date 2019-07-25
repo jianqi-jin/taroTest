@@ -1,5 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
+import NavBottom from '../../components/common/NavBottom/NavBottom'
 import './user.scss'
 
 export default class User extends Component {
@@ -15,6 +16,7 @@ export default class User extends Component {
         return (
             <View className='user'>
                 <Text>user</Text>
+                <NavBottom selectedIndex={3}></NavBottom>
             </View>
         )
     }

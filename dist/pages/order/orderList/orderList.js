@@ -22,30 +22,28 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ReduceAdd = (_temp2 = _class = function (_BaseComponent) {
-  _inherits(ReduceAdd, _BaseComponent);
+var OrderList = (_temp2 = _class = function (_BaseComponent) {
+  _inherits(OrderList, _BaseComponent);
 
-  function ReduceAdd() {
+  function OrderList() {
     var _ref;
 
     var _temp, _this, _ret;
 
-    _classCallCheck(this, ReduceAdd);
+    _classCallCheck(this, OrderList);
 
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ReduceAdd.__proto__ || Object.getPrototypeOf(ReduceAdd)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["count", "number"], _this.onClick = function (type) {
-      console.log(type);
-      _this.props.onAction(type);
-    }, _this.customComponents = ["ThemeView"], _temp), _possibleConstructorReturn(_this, _ret);
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = OrderList.__proto__ || Object.getPrototypeOf(OrderList)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["$compid__3"], _this.customComponents = ["NavBottom"], _temp), _possibleConstructorReturn(_this, _ret);
   }
 
-  _createClass(ReduceAdd, [{
+  _createClass(OrderList, [{
     key: "_constructor",
     value: function _constructor(props) {
-      _get(ReduceAdd.prototype.__proto__ || Object.getPrototypeOf(ReduceAdd.prototype), "_constructor", this).call(this, props);
+      _get(OrderList.prototype.__proto__ || Object.getPrototypeOf(OrderList.prototype), "_constructor", this).call(this, props);
+
       this.$$refs = [];
     }
   }, {
@@ -56,21 +54,19 @@ var ReduceAdd = (_temp2 = _class = function (_BaseComponent) {
       var __isRunloopRef = arguments[2];
       var __prefix = this.$prefix;
       ;
-
-      var count = this.__props.number;
+      var $compid__3 = (0, _index.genCompid)(__prefix + "$compid__3");
+      _index.propsManager.set({
+        "selectedIndex": 2
+      }, $compid__3);
       Object.assign(this.__state, {
-        count: count
+        $compid__3: $compid__3
       });
       return this.__state;
     }
   }]);
 
-  return ReduceAdd;
-}(_index.Component), _class.$$events = ["onClick"], _class.$$componentPath = "components/common/ReduceAdd/ReduceAdd", _temp2);
+  return OrderList;
+}(_index.Component), _class.$$events = [], _class.$$componentPath = "pages/order/orderList/orderList", _temp2);
+exports.default = OrderList;
 
-ReduceAdd.options = {
-  addGlobalClass: true
-};
-exports.default = ReduceAdd;
-
-Component(require('../../../npm/@tarojs/taro-weapp/index.js').default.createComponent(ReduceAdd));
+Component(require('../../../npm/@tarojs/taro-weapp/index.js').default.createComponent(OrderList, true));

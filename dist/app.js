@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -6,9 +6,21 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _index = require('./npm/@tarojs/taro-weapp/index.js');
+var _index = require("./npm/@tarojs/taro-weapp/index.js");
 
 var _index2 = _interopRequireDefault(_index);
+
+var _api = require("./util/api.js");
+
+var _api2 = _interopRequireDefault(_api);
+
+var _global = require("./util/global.js");
+
+var _index3 = require("./store/index.js");
+
+var _index4 = _interopRequireDefault(_index3);
+
+var _index5 = require("./npm/@tarojs/redux/index.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -23,6 +35,18 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 // if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
 //   require('nerv-devtools')
 // }
+var store = (0, _index4.default)();
+(0, _index5.setStore)(store);
+
+if (_index5.ReduxContext.Provider) {
+  _index5.ReduxContext.Provider({
+    store: store
+  });
+  _index5.ReduxContext.Provider({
+    store: store
+  });
+}
+
 var _App = function (_BaseComponent) {
   _inherits(_App, _BaseComponent);
 
@@ -39,7 +63,7 @@ var _App = function (_BaseComponent) {
     var _this = _possibleConstructorReturn(this, (_App.__proto__ || Object.getPrototypeOf(_App)).apply(this, arguments));
 
     _this.config = {
-      pages: ['pages/index/index', 'pages/user/user'],
+      pages: ['pages/index/index', 'pages/user/user', 'pages/user/login/login', 'pages/refer/refer', 'pages/order/orderList/orderList'],
       window: {
         backgroundTextStyle: 'light',
         navigationBarBackgroundColor: '#fff',
@@ -51,22 +75,93 @@ var _App = function (_BaseComponent) {
   }
 
   _createClass(_App, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {}
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      //测试延时加载
+      //监测授权状态
+      _index2.default.login({
+        success: function success(res) {
+          console.log(res);
+          //使用code换取openid
+          _api2.default.login.getOpenId({ code: res.code }).then(function (res) {
+            console.log(res);
+            //获取到openid进行storage设置全局openid
+            //使用异步因为react native 不支持同步操作
+            (0, _global.setGlobal)({
+              key: 'openid',
+              data: 'sns_wa_' + res.data.data.openid
+            });
+          });
+        }
+      });
+      (0, _index.getSetting)({
+        success: function success(res) {
+          if (!res.authSetting['scope.userInfo']) {
+            //未登录
+            console.log('未授权');
+          } else {
+            _index2.default.getUserInfo().then(function (res) {
+              //如果已经授权，就进行储存storage
+              _index2.default.setStorage({
+                key: 'userInfo',
+                data: res.userInfo
+              });
+            });
+          }
+        }
+      });
+      //设置全局变量至storage缓存 Start
+      var baseConfig = {
+        navBottom: [{
+          url: '/pages/index/index',
+          img: '/res/icon/nav-icon-home.png',
+          selectedImg: '/res/icon/nav-icon-home-pre.png',
+          title: '首页',
+          havT: true
+        }, {
+          url: '/pages/refer/refer',
+          img: '/res/icon/tuijian.png',
+          selectedImg: '/res/icon/tuijian.png',
+          title: '推荐有奖',
+          havT: false
+        }, {
+          url: '/pages/order/orderList/orderList',
+          img: '/res/icon/nav-icon-order.png',
+          selectedImg: '/res/icon/nav-icon-order-pre.png',
+          title: '订单',
+          havT: true
+        }, {
+          url: '/pages/user/user',
+          img: '/res/icon/nav-icon-user.png',
+          selectedImg: '/res/icon/nav-icon-user-pre.png',
+          title: '我的',
+          havT: true
+        }]
+      };
+      // 设置navBottom Start
+      // 设置navBottom End
+      setTimeout(function () {
+        (0, _global.setGlobal)({
+          key: 'baseConfig',
+          data: baseConfig
+        });
+      }, 5000);
+      //设置全局变量至storage缓存 End
+    }
   }, {
-    key: 'componentDidShow',
+    key: "componentDidShow",
     value: function componentDidShow() {}
   }, {
-    key: 'componentDidHide',
+    key: "componentDidHide",
     value: function componentDidHide() {}
   }, {
-    key: 'componentDidCatchError',
+    key: "componentDidCatchError",
     value: function componentDidCatchError() {}
     // 在 App 类中的 render() 函数没有实际作用
     // 请勿修改此函数
 
   }, {
-    key: '_createData',
+    key: "_createData",
     value: function _createData() {}
   }]);
 

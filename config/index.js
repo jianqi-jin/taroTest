@@ -28,11 +28,16 @@ const config = {
   },
   copy: {
     patterns: [
+      {
+        from: 'src/res',
+        to: 'dist/res'
+      }
     ],
     options: {
     }
   },
   weapp: {
+    esnextModules: ['taro-ui'],
     module: {
       postcss: {
         autoprefixer: {

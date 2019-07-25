@@ -36,9 +36,9 @@ var User = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = User.__proto__ || Object.getPrototypeOf(User)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = [], _this.config = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = User.__proto__ || Object.getPrototypeOf(User)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["$compid__1"], _this.config = {
       navigationBarTitleText: '我的'
-    }, _this.customComponents = [], _temp), _possibleConstructorReturn(_this, _ret);
+    }, _this.customComponents = ["NavBottom"], _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(User, [{
@@ -55,7 +55,13 @@ var User = (_temp2 = _class = function (_BaseComponent) {
       var __isRunloopRef = arguments[2];
       var __prefix = this.$prefix;
       ;
-      Object.assign(this.__state, {});
+      var $compid__1 = (0, _index.genCompid)(__prefix + "$compid__1");
+      _index.propsManager.set({
+        "selectedIndex": 3
+      }, $compid__1);
+      Object.assign(this.__state, {
+        $compid__1: $compid__1
+      });
       return this.__state;
     }
   }]);

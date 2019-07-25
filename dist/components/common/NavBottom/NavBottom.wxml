@@ -1,0 +1,14 @@
+<block wx:if="{{$taroCompReady}}">
+    <theme-view>
+        <view class="navBottomBox">
+            <view class="navItem" bindtap="onItemClick" wx:key="title" wx:for="{{navBottom}}" wx:for-item="item" wx:for-index="_anonIdx2" data-e-tap-so="this" data-e-tap-a-a="{{item}}">
+                <view class="{{item.havT ? 'icon' : 'icon iconNoTitle'}}">
+                    <image src="{{item.img}}"></image>
+                </view>
+                <block wx:if="{{item.havT}}">
+                    <view>{{item.title}}</view>
+                </block>
+            </view>
+        </view>
+    </theme-view>
+</block>

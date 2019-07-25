@@ -1,0 +1,5 @@
+<block wx:if="{{$taroCompReady}}">
+    <view>Login
+        <button bindgetuserinfo="onBtnUserClick" open-type="getUserInfo">授权</button>
+    </view>
+</block>

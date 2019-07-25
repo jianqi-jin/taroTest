@@ -9,12 +9,23 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
 var _class, _temp2;
+// import { connect } from 'react-redux'
+
+var _tslib = require("../../npm/tslib/tslib.js");
+
+var tslib_1 = _interopRequireWildcard(_tslib);
 
 var _index = require("../../npm/@tarojs/taro-weapp/index.js");
 
 var _index2 = _interopRequireDefault(_index);
 
+var _index3 = require("../../npm/@tarojs/redux/index.js");
+
+var _counter = require("../../actions/counter.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -36,66 +47,17 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["$compid__18", "number"], _this.onClick = function (e) {
-      console.log(e);
-      _index2.default.navigateTo({
-        url: '/pages/user/user'
-      });
-    }, _this.config = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["add", "__fn_onClick", "dec", "asyncAdd", "counter"], _this.config = {
       navigationBarTitleText: '首页'
-    }, _this.customComponents = ["ReduceAdd"], _temp), _possibleConstructorReturn(_this, _ret);
+    }, _this.customComponents = [], _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(Index, [{
     key: "_constructor",
-    value: function _constructor(props) {
-      _get(Index.prototype.__proto__ || Object.getPrototypeOf(Index.prototype), "_constructor", this).call(this, props);
-      /**
-       * 指定config的类型声明为: Taro.Config
-       *
-       * 由于 typescript 对于 object 类型推导只能推出 Key 的基本类型
-       * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
-       * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
-       */
-
-      this.state = {
-        number: 1
-      };
+    value: function _constructor() {
+      _get(Index.prototype.__proto__ || Object.getPrototypeOf(Index.prototype), "_constructor", this).apply(this, arguments);
       this.$$refs = [];
     }
-  }, {
-    key: "onAction",
-    value: function onAction(type) {
-      if (type === 'add') {
-        console.log(type);
-        this.setState({
-          number: this.state.number + 1
-        });
-      } else {
-        this.setState({
-          number: this.state.number - 1
-        });
-      }
-    }
-  }, {
-    key: "componentWillMount",
-    value: function componentWillMount() {
-      console.log('Will');
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      console.log('Will');
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {}
-  }, {
-    key: "componentDidShow",
-    value: function componentDidShow() {}
-  }, {
-    key: "componentDidHide",
-    value: function componentDidHide() {}
   }, {
     key: "_createData",
     value: function _createData() {
@@ -104,22 +66,46 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       var __isRunloopRef = arguments[2];
       var __prefix = this.$prefix;
       ;
-      var $compid__18 = (0, _index.genCompid)(__prefix + "$compid__18");
-
-      var number = this.__state.number;
-      _index.propsManager.set({
-        "onAction": this.onAction.bind(this),
-        "number": number
-      }, $compid__18);
-      Object.assign(this.__state, {
-        $compid__18: $compid__18
-      });
+      Object.assign(this.__state, {});
       return this.__state;
+    }
+  }, {
+    key: "funPrivatePUGPW",
+    value: function funPrivatePUGPW() {
+      return this.props.add.apply(undefined, Array.prototype.slice.call(arguments, 1));
+    }
+  }, {
+    key: "funPrivateGPgll",
+    value: function funPrivateGPgll() {
+      return this.props.dec.apply(undefined, Array.prototype.slice.call(arguments, 1));
+    }
+  }, {
+    key: "funPrivateImDeB",
+    value: function funPrivateImDeB() {
+      return this.props.asyncAdd.apply(undefined, Array.prototype.slice.call(arguments, 1));
     }
   }]);
 
   return Index;
-}(_index.Component), _class.$$events = ["onClick"], _class.$$componentPath = "pages/index/index", _temp2);
+}(_index.Component), _class.$$events = ["funPrivatePUGPW", "funPrivateGPgll", "funPrivateImDeB"], _class.$$componentPath = "pages/index/index", _temp2);
+Index = tslib_1.__decorate([(0, _index3.connect)(function (_ref2) {
+  var counter = _ref2.counter;
+  return {
+    counter: counter
+  };
+}, function (dispatch) {
+  return {
+    add: function add() {
+      dispatch((0, _counter.add)());
+    },
+    dec: function dec() {
+      dispatch((0, _counter.minus)());
+    },
+    asyncAdd: function asyncAdd() {
+      dispatch((0, _counter.asyncAdd)());
+    }
+  };
+})], Index);
 exports.default = Index;
 
 Component(require('../../npm/@tarojs/taro-weapp/index.js').default.createComponent(Index, true));

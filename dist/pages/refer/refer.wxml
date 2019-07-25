@@ -1,0 +1,6 @@
+<block wx:if="{{$taroCompReady}}">
+    <view>
+        <view>Im refer</view>
+        <nav-bottom compid="{{$compid__2}}"></nav-bottom>
+    </view>
+</block>

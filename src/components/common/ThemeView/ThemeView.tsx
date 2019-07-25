@@ -1,6 +1,6 @@
 import { Component } from "@tarojs/taro";
 import { View } from "@tarojs/components";
-require('./ThemeVeiw.scss')
+require('./ThemeView.scss')
 
 class ThemeView extends Component{
     render(){

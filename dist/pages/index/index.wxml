@@ -1,6 +1,8 @@
 <block wx:if="{{$taroCompReady}}">
-    <view class="index"><text>Hello world!</text>
-        <reduce-add compid="{{$compid__18}}"></reduce-add>
-        <button bindtap="onClick">goUser</button>
+    <view class="todo">
+        <button class="add_btn" bindtap="funPrivatePUGPW">+</button>
+        <button class="dec_btn" bindtap="funPrivateGPgll">-</button>
+        <button class="dec_btn" bindtap="funPrivateImDeB">async</button>
+        <view>{{counter ? counter.num : '0'}}</view>
     </view>
 </block>

@@ -1,0 +1,5 @@
+'use strict';
+
+{
+  module.exports = require('./cjs/scheduler-tracing.development.js');
+}

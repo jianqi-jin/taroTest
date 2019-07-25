@@ -1,6 +1,4 @@
 {
-  "usingComponents": {
-    "reduce-add": "../../components/common/ReduceAdd/ReduceAdd"
-  },
+  "usingComponents": {},
   "navigationBarTitleText": "首页"
 }
